@@ -10,4 +10,11 @@ Rails.application.routes.draw do
     patch '/speakers/:id' => 'speakers#update'
     delete '/speakers/:id' => 'speakers#destroy'
   end
+  namespace :api do
+    get '/meetings' => 'meetings#index'
+    get '/meetings/:id' =>'meetings#show'
+    post '/meetings/' => 'meetings#create'
+    patch '/meetings/:id' => 'meetings#update'
+    delete '/meetings/:id' => 'meetings#destroy'
+  end
 end

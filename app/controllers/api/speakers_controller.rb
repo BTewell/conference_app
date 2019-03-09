@@ -22,18 +22,20 @@ class Api::SpeakersController < ApplicationController
       render 'errors.json.jbuilder', status: :unprocessible_entity
     end
   end
+
   def update
     the_id = params[:id]
     @speaker = Speaker.find_by(id: the_id)
     @speaker.first_name = params[:first_name] || @speaker.first_name
     @speaker.last_name = params[:last_name] || @speaker.last_name
     @speaker.email = params[:email] || @speaker.email
-    if @product.save
+    if @speaker.save
       render 'show.json.jbuilder'
     else
       render 'errors.json.jbuilder', status: :unprocessible_entity
     end
   end
+
   def destroy
     the_id = params[:id]
     @speaker = Speaker.find_by(id: the_id)
