@@ -14,7 +14,8 @@ class Api::MeetingsController < ApplicationController
     @meeting = Meeting.new(
     title: params[:title],
     agenda: params[:agenda],
-    time: params[:time]
+    time: params[:time],
+    room: params[:room]
       )
     if @meeting.save
       render 'show.json.jbuilder'
@@ -29,6 +30,7 @@ class Api::MeetingsController < ApplicationController
     @meeting.title = params[:title] || @meeting.title
     @meeting.agenda = params[:agenda] || @meeting.agenda
     @meeting.time = params[:time] || @meeting.time
+    @meeting.room = params[:room] || @meeting.room
     if @meeting.save
       render 'show.json.jbuilder'
     else
